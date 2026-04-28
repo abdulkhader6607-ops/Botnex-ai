@@ -1,88 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Botnex AI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Botnex AI provides AI voice agents that answer calls, qualify leads, and book appointments 24/7 for US businesses." />
+  <title>Botnex AI | AI Voice Agents That Answer, Sell & Book — 24/7</title>
+  <style>
+    :root {
+      --bg: #05070d;
+      --bg-elev: #0d1320;
+      --bg-card: #111a2a;
+      --text: #ecf2ff;
+      --muted: #9ba8c7;
+      --accent: #24e1bf;
+      --accent-2: #1fb59b;
+      --border: #22304a;
+      --shadow-soft: 0 16px 36px rgba(0, 0, 0, 0.35);
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --max-width: 1120px;
+    }
 
-<style>
-body {font-family: Arial; margin:0; background:#0b0b0f; color:white;}
-.container {max-width:1000px; margin:auto; padding:40px 20px;}
-h1 {font-size:40px;}
-p {color:#aaa;}
-.btn {background:#00e5c4; padding:12px 20px; border-radius:25px; color:black; text-decoration:none;}
-.cards {display:flex; gap:20px; margin-top:30px;}
-.card {background:#16161f; padding:20px; border-radius:10px; flex:1;}
-.price {font-size:28px; font-weight:bold;}
-.wa {position:fixed; bottom:20px; right:20px; background:#25d366; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:26px; text-decoration:none;}
-</style>
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(850px 420px at 90% -10%, rgba(36, 225, 191, 0.16), transparent 60%),
+        radial-gradient(700px 320px at -10% 6%, rgba(63, 108, 255, 0.16), transparent 58%),
+        var(--bg);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+    }
+
+    .container {
+      width: min(var(--max-width), 92%);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 4.75rem 0;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    p { margin: 0; }
+
+    .muted { color: var(--muted); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(36, 225, 191, 0.35);
+      color: #befff2;
+      background: rgba(36, 225, 191, 0.08);
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      border: 0;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      padding: 0.85rem 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      will-change: transform;
+    }
+
+    .btn-primary {
+      color: #01221d;
+      background: linear-gradient(135deg, var(--accent), #5ef0d7);
+      box-shadow: 0 12px 30px rgba(36, 225, 191, 0.34);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(36, 225, 191, 0.42);
+    }
+
+    .btn-outline {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(36, 225, 191, 0.48);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(5, 7, 13, 0.76);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-wrap {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(36, 225, 191, 0.9);
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding-top: 5.3rem;
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6.4vw, 3.7rem);
+      max-width: 16ch;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 60ch;
+      font-size: clamp(1rem, 2.4vw, 1.12rem);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      margin-top: 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .hero-note {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #b7c4e0;
+    }
+
+    .hero-panel {
+      padding: 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(36, 225, 191, 0.12), transparent 38%), var(--bg-elev);
+    }
+
+    .hero-stats {
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 0.8rem;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .section h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 0.65rem;
+    }
+
+    .section-head {
+      margin-bottom: 1.3rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .feature-card,
+    .result-card,
+    .step-card,
+    .pricing-card {
+      padding: 1.15rem;
+    }
+
+    .feature-icon,
+    .step-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(36, 225, 191, 0.4);
+      background: rgba(36, 225, 191, 0.1);
+      margin-bottom: 0.7rem;
+      font-size: 1.05rem;
+    }
+
+    .feature-card h3,
+    .step-card h3,
+    .pricing-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .pricing-card .price {
+      font-size: 1.9rem;
+      font-weight: 800;
+      margin: 0.2rem 0 0.55rem;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.6rem 0 0;
+      display: grid;
+      gap: 0.48rem;
+      color: #dbe7ff;
+      font-size: 0.95rem;
+    }
+
+    .pricing-note,
+    .urgency {
+      margin-top: 1rem;
+      border-radius: 10px;
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      color: #cad6f3;
+      font-size: 0.93rem;
+    }
+
+    .urgency {
+      border-color: rgba(36, 225, 191, 0.35);
+      background: rgba(36, 225, 191, 0.08);
+      color: #c5fff3;
+      font-weight: 600;
+    }
+
+    .risk {
+      text-align: center;
+      padding: 1.4rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(36, 225, 191, 0.36);
+      background: linear-gradient(180deg, rgba(36, 225, 191, 0.12), rgba(36, 225, 191, 0.03));
+      color: #d9fff8;
+      font-weight: 600;
+    }
+
+    .cta-final {
+      text-align: center;
+      padding: 2rem 1.2rem;
+    }
+
+    .cta-final h2 {
+      margin-bottom: 0.8rem;
+    }
+
+    footer {
+      padding: 2rem 0 2.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wa {
+      position: fixed;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #25d366;
+      color: #fff;
+      font-size: 1.65rem;
+      box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+      transition: transform 0.2s ease;
+    }
+
+    .wa:hover { transform: translateY(-2px) scale(1.02); }
+
+    @media (min-width: 760px) {
+      .nav-links { display: inline-flex; }
+      .hero { grid-template-columns: 1.08fr 0.92fr; }
+      .features-grid,
+      .results-grid,
+      .steps-grid,
+      .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1020px) {
+      .features-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .results-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .steps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .section { padding: 5.2rem 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in,
+      .btn,
+      .card,
+      .wa { transition: none !important; }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Botnex AI Home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        Botnex AI
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#results">Results</a>
+        <a href="#how">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a class="btn btn-primary" href="mailto:sales@getbotnex.com?subject=Book%20Free%20Demo">Book Free Demo</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="container">
+  <main id="top">
+    <section class="section hero container">
+      <div class="fade-in">
+        <span class="pill">⚡ AI Sales Automation Built for Service Businesses</span>
+        <h1>AI Voice Agents That Answer, Sell &amp; Book — 24/7</h1>
+        <p>Never miss a call, convert more leads, and automate your entire sales pipeline without hiring staff.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:sales@getbotnex.com?subject=Book%20Free%20Demo">Book Free Demo</a>
+          <a class="btn btn-outline" href="#pricing">View Plans</a>
+        </div>
+        <p class="hero-note">Used by businesses across the US to increase bookings and capture missed leads.</p>
+      </div>
+      <aside class="hero-panel fade-in" aria-label="Performance highlights">
+        <h2>Why Teams Switch to Botnex AI</h2>
+        <p class="muted" style="margin-top:.45rem;">Give every caller an instant response, capture intent, and convert demand automatically.</p>
+        <div class="hero-stats">
+          <div class="stat"><b>30–60%</b><span class="muted">Higher booking volume</span></div>
+          <div class="stat"><b>&lt;10 sec</b><span class="muted">Lead response time</span></div>
+          <div class="stat"><b>24/7</b><span class="muted">Always-on call handling</span></div>
+          <div class="stat"><b>0 missed</b><span class="muted">After-hours opportunities</span></div>
+        </div>
+      </aside>
+    </section>
 
-<h1>Never Miss Another Customer Again</h1>
+    <section id="features" class="section container">
+      <div class="section-head fade-in">
+        <h2>What We Do</h2>
+        <p class="muted">A complete AI calling system designed to increase booked appointments and close more leads automatically.</p>
+      </div>
+      <div class="grid features-grid">
+        <article class="card feature-card fade-in">
+          <span class="feature-icon" aria-hidden="true">📞</span>
+          <h3>Answer Calls Automatically</h3>
+          <p class="muted">Your AI agent handles inbound calls like a real receptionist with consistent, on-brand conversations.</p>
+        </article>
+        <article class="card feature-card fade-in">
+          <span class="feature-icon" aria-hidden="true">🎯</span>
+          <h3>Qualify and Convert Leads</h3>
+          <p class="muted">It asks smart qualification questions and guides callers toward the next best action.</p>
+        </article>
+        <article class="card feature-card fade-in">
+          <span class="feature-icon" aria-hidden="true">📅</span>
+          <h3>Book Appointments Instantly</h3>
+          <p class="muted">Appointments are placed directly into your calendar so your team stays focused on delivery.</p>
+        </article>
+        <article class="card feature-card fade-in">
+          <span class="feature-icon" aria-hidden="true">🔁</span>
+          <h3>Follow Up Until Response</h3>
+          <p class="muted">Automated follow-up sequences keep leads warm and moving until they answer.</p>
+        </article>
+        <article class="card feature-card fade-in">
+          <span class="feature-icon" aria-hidden="true">📈</span>
+          <h3>Handle Inbound &amp; Outbound</h3>
+          <p class="muted">Run inbound support and outbound sales campaigns from a single AI voice workflow.</p>
+        </article>
+      </div>
+    </section>
 
-<p>
-AI handles your calls, follow-ups, and customer conversations automatically — so you capture more leads and convert them into paying customers without hiring more staff.
-</p>
+    <section id="results" class="section container">
+      <div class="section-head fade-in">
+        <h2>Proven Results</h2>
+        <p class="muted">Botnex AI is built for real business outcomes, not vanity metrics.</p>
+      </div>
+      <div class="grid results-grid">
+        <article class="card result-card fade-in">
+          <h3>Increase bookings by 30–60%</h3>
+          <p class="muted">Capture and convert demand consistently without waiting for staff availability.</p>
+        </article>
+        <article class="card result-card fade-in">
+          <h3>Capture missed calls instantly</h3>
+          <p class="muted">Every missed opportunity becomes a tracked lead with immediate follow-up.</p>
+        </article>
+        <article class="card result-card fade-in">
+          <h3>Automate follow-ups without staff</h3>
+          <p class="muted">Keep prospects engaged while reducing manual workload and overhead.</p>
+        </article>
+      </div>
+    </section>
 
-<a href="#" class="btn">Book Free Demo</a>
+    <section id="how" class="section container">
+      <div class="section-head fade-in">
+        <h2>How It Works</h2>
+        <p class="muted">Get fully deployed in days with a simple four-step setup.</p>
+      </div>
+      <div class="grid steps-grid">
+        <article class="card step-card fade-in">
+          <span class="step-icon" aria-hidden="true">1</span>
+          <h3>Setup AI Agent</h3>
+          <p class="muted">We customize your AI voice agent with your services, scripts, and lead goals.</p>
+        </article>
+        <article class="card step-card fade-in">
+          <span class="step-icon" aria-hidden="true">2</span>
+          <h3>Connect Phone System</h3>
+          <p class="muted">Forward calls from your existing number and connect routing in minutes.</p>
+        </article>
+        <article class="card step-card fade-in">
+          <span class="step-icon" aria-hidden="true">3</span>
+          <h3>AI Handles Calls</h3>
+          <p class="muted">Your agent answers inbound calls and executes outbound follow-up workflows automatically.</p>
+        </article>
+        <article class="card step-card fade-in">
+          <span class="step-icon" aria-hidden="true">4</span>
+          <h3>Get Bookings Automatically</h3>
+          <p class="muted">Qualified leads are booked and delivered to your team with full call context.</p>
+        </article>
+      </div>
+    </section>
 
-<hr>
+    <section id="pricing" class="section container">
+      <div class="section-head fade-in">
+        <h2>Pricing</h2>
+        <p class="muted">Choose the plan that matches your call volume and growth stage.</p>
+      </div>
+      <div class="grid pricing-grid">
+        <article class="card pricing-card fade-in">
+          <h3>Starter</h3>
+          <div class="price">$149<span style="font-size:1rem;font-weight:600;">/mo</span></div>
+          <ul>
+            <li>✅ 300 AI calls</li>
+            <li>✅ Lead capture</li>
+          </ul>
+        </article>
+        <article class="card pricing-card fade-in" style="border-color:rgba(36,225,191,.55);">
+          <h3>Growth</h3>
+          <div class="price">$399<span style="font-size:1rem;font-weight:600;">/mo</span></div>
+          <ul>
+            <li>✅ 1000 calls</li>
+            <li>✅ CRM + automation</li>
+          </ul>
+        </article>
+        <article class="card pricing-card fade-in">
+          <h3>Premium</h3>
+          <div class="price">$799<span style="font-size:1rem;font-weight:600;">/mo</span></div>
+          <ul>
+            <li>✅ Unlimited calls</li>
+            <li>✅ Full automation</li>
+          </ul>
+        </article>
+      </div>
+      <p class="pricing-note fade-in">Includes setup, AI training, and optimization.</p>
+      <p class="urgency fade-in">Limited onboarding slots available.</p>
+    </section>
 
-<h2>What We Do</h2>
+    <section class="section container">
+      <div class="risk fade-in">7-Day Risk-Free Trial — If it doesn’t work, we refund you. No questions asked.</div>
+    </section>
 
-<p>
-Botnex AI is your 24/7 AI-powered sales and customer communication system.
-</p>
+    <section class="section container">
+      <div class="card cta-final fade-in">
+        <h2>Start Capturing Every Lead Today</h2>
+        <p class="muted" style="margin-bottom:1rem;">Upgrade from missed calls to an always-on revenue engine.</p>
+        <a class="btn btn-primary" href="mailto:sales@getbotnex.com?subject=Book%20Free%20Demo">Book Free Demo</a>
+      </div>
+    </section>
+  </main>
 
-<ul>
-<li>📞 Handles inbound & outbound calls</li>
-<li>💰 Converts leads into customers</li>
-<li>📅 Books appointments automatically</li>
-<li>🔁 Follows up until customer responds</li>
-<li>📊 Tracks all leads</li>
-</ul>
+  <footer>
+    <div class="container">
+      <strong>Botnex AI</strong> • <a style="color:var(--accent);" href="mailto:sales@getbotnex.com">sales@getbotnex.com</a>
+    </div>
+  </footer>
 
-<hr>
+  <a href="https://wa.me/919019683211" class="wa" aria-label="Chat with Botnex AI on WhatsApp">💬</a>
 
-<h2>Pricing</h2>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.12 });
 
-<div class="cards">
-
-<div class="card">
-<h3>Starter</h3>
-<div class="price">$149/mo</div>
-<p>300 AI calls + lead capture</p>
-</div>
-
-<div class="card">
-<h3>Growth</h3>
-<div class="price">$399/mo</div>
-<p>1000 calls + automation + CRM</p>
-</div>
-
-<div class="card">
-<h3>Premium</h3>
-<div class="price">$799/mo</div>
-<p>Unlimited calls + full automation</p>
-</div>
-
-</div>
-
-<p>7-day risk-free trial • Cancel anytime</p>
-
-<hr>
-
-<h2>Contact</h2>
-<p>sales@getbotnex.com</p>
-
-</div>
-
-<!-- WhatsApp button (unchanged) -->
-<a href="https://wa.me/919019683211" class="wa">💬</a>
-
+    document.querySelectorAll('.fade-in').forEach((node) => observer.observe(node));
+  </script>
 </body>
 </html>
