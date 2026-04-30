@@ -1,162 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Botnex AI — AI That Answers, Qualifies & Books</title>
+<!-- PRICING -->
+<section id="pricing" class="section reveal">
+  <h2>Simple plans. Serious ROI.</h2>
+  <div class="sub">Botnex isn’t a cost — it’s a revenue engine.</div>
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <div class="pricing">
+    <div class="price">
+      <h3>Starter</h3>
+      <h2>$149/mo</h2>
+      <p><b>Start capturing missed revenue</b></p>
+      <p>Includes up to <b>400 minutes/month</b></p>
+      <p>Captures missed calls automatically</p>
+      <p>Books appointments without manual effort</p>
+      <p>Runs 24/7 without staff</p>
+      <p style="color:var(--accent)">→ Pays for itself with 2–3 bookings</p>
+      <p style="color:var(--dim);font-size:12px;margin-top:10px">
+        Extra usage billed at $0.10 per minute
+      </p>
+    </div>
 
-<style>
-:root{
-  --bg:#050505;
-  --card:#0c0c0c;
-  --muted:#a3a3a3;
-  --dim:#737373;
-  --accent:#00e59b;
-  --border:#1e1e1e;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--bg);color:#fff;
-  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-}
-.container{max-width:1100px;margin:auto;padding:20px}
+    <div class="price highlight">
+      <h3>Growth</h3>
+      <h2>$399/mo</h2>
+      <p><b>Scale your lead pipeline</b></p>
+      <p>Includes up to <b>1200 minutes/month</b></p>
+      <p>Handles high call volume</p>
+      <p>Qualifies + converts leads</p>
+      <p>Automated follow-ups until response</p>
+      <p style="color:var(--accent)">→ +30–60% more bookings</p>
+      <p style="color:var(--dim);font-size:12px;margin-top:10px">
+        Extra usage billed at $0.08 per minute
+      </p>
+    </div>
 
-/* NAV */
-.nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:16px 0;position:sticky;top:0;background:rgba(5,5,5,.7);
-  backdrop-filter: blur(10px);border-bottom:1px solid rgba(255,255,255,.04);z-index:10;
-}
-.nav .brand{font-family:'Outfit';font-weight:500}
-.nav a{color:var(--muted);margin-left:20px;text-decoration:none}
-.nav a:hover{color:#fff}
+    <div class="price">
+      <h3>Premium</h3>
+      <h2>$799/mo</h2>
+      <p><b>Full automation</b></p>
+      <p>Includes up to <b>3000 minutes/month</b></p>
+      <p>Unlimited AI call handling</p>
+      <p>Multi-agent workflows</p>
+      <p>Advanced scaling & optimization</p>
+      <p style="color:var(--accent)">→ Zero missed revenue</p>
+      <p style="color:var(--dim);font-size:12px;margin-top:10px">
+        Extra usage billed at $0.06 per minute
+      </p>
+    </div>
+  </div>
 
-/* BUTTONS */
-.btn{
-  background:var(--accent);color:#000;padding:12px 22px;border-radius:999px;
-  font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
-  transition:.25s;border:1px solid rgba(0,0,0,.1)
-}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,229,155,.25)}
-.btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.1)}
-.btn.ghost:hover{border-color:var(--accent)}
-
-/* HERO */
-.hero{text-align:center;padding:110px 20px 70px}
-.hero h1{
-  font-family:'Outfit';font-weight:300;
-  font-size:clamp(34px,5vw,54px);line-height:1.15;letter-spacing:-.02em
-}
-.hero .accent{color:var(--accent);font-weight:500}
-.hero p{color:var(--muted);max-width:720px;margin:18px auto 26px;font-size:17px}
-.trust{color:var(--dim);font-size:13px;margin-top:10px}
-
-/* STATS */
-.stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-  max-width:760px;margin:28px auto 0
-}
-.stat{
-  border:1px solid var(--border);border-radius:12px;padding:16px;background:rgba(255,255,255,.02)
-}
-.stat h3{margin:0;color:var(--accent);font-family:'Outfit';font-weight:400}
-.stat p{margin:4px 0 0;color:var(--dim);font-size:13px}
-
-/* FORM */
-form{margin-top:22px}
-.form-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-input{
-  padding:12px 14px;border-radius:10px;border:1px solid var(--border);
-  background:#0a0a0a;color:#fff;min-width:200px
-}
-input::placeholder{color:#555}
-
-/* SECTION */
-.section{padding:80px 20px}
-.section h2{font-family:'Outfit';font-weight:300;text-align:center;margin-bottom:8px}
-.section .sub{color:var(--muted);text-align:center;margin-bottom:30px}
-
-/* FEATURES */
-.features{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;margin-top:30px
-}
-.card{
-  border:1px solid var(--border);padding:22px;border-radius:14px;background:var(--card);
-}
-
-/* PRICING */
-.pricing{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;margin-top:30px
-}
-.price{
-  border:1px solid var(--border);padding:26px;border-radius:14px;text-align:center;background:var(--card);
-}
-.price.highlight{border-color:var(--accent)}
-
-footer{text-align:center;padding:40px;color:var(--dim)}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<!-- HERO -->
-<section class="hero">
-<h1>Turn Missed Calls Into <span class="accent">Booked Appointments</span> Automatically</h1>
-<p>Botnex answers every call, qualifies leads, and books appointments 24/7.</p>
+  <p style="text-align:center;color:var(--dim);margin-top:18px">
+    Plans are designed for typical usage. Most businesses never exceed limits.
+  </p>
 </section>
-
-<!-- UPDATED PRICING -->
-<section id="pricing" class="section">
-<h2>Simple plans. Serious ROI.</h2>
-
-<div class="pricing">
-
-<div class="price">
-<h3>Starter</h3>
-<h2>$149/mo</h2>
-<p><b>Start capturing missed revenue</b></p>
-<p>Includes up to <b>400 minutes/month</b></p>
-<p>AI answers & books appointments</p>
-<p style="color:#00e59b">Pays for itself with 2–3 bookings</p>
-<p style="font-size:12px;color:#737373">Extra usage billed at $0.10 per minute</p>
-</div>
-
-<div class="price highlight">
-<h3>Growth</h3>
-<h2>$399/mo</h2>
-<p><b>Scale your lead pipeline</b></p>
-<p>Includes up to <b>1200 minutes/month</b></p>
-<p>Handles high call volume</p>
-<p style="color:#00e59b">+30–60% more bookings</p>
-<p style="font-size:12px;color:#737373">Extra usage billed at $0.08 per minute</p>
-</div>
-
-<div class="price">
-<h3>Premium</h3>
-<h2>$799/mo</h2>
-<p><b>Full automation</b></p>
-<p>Includes up to <b>3000 minutes/month</b></p>
-<p>Unlimited AI call handling</p>
-<p style="color:#00e59b">Zero missed revenue</p>
-<p style="font-size:12px;color:#737373">Extra usage billed at $0.06 per minute</p>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-Botnex AI
-</footer>
-
-</div>
-
-</body>
-</html>
