@@ -21,7 +21,6 @@ body {
   padding:20px;
 }
 
-/* NAV */
 .nav {
   display:flex;
   justify-content:space-between;
@@ -148,7 +147,7 @@ footer {
     <a href="#">Features</a>
     <a href="#">Pricing</a>
   </div>
-  <a href="#" class="btn">Book Free Demo</a>
+  <a href="#form" class="btn">Book Free Demo</a>
 </div>
 
 <!-- HERO -->
@@ -159,14 +158,14 @@ footer {
     Turn every inbound call into a booked appointment. Botnex answers instantly, qualifies leads, and fills your calendar — 24/7 without hiring staff.
   </p>
 
-  <a href="#" class="btn">Book Free Demo</a>
+  <a href="#form" class="btn">Book Free Demo</a>
 
   <p style="color:#777; margin-top:10px;">
     Trusted by service businesses to capture missed calls and increase bookings
   </p>
 
   <!-- FORM -->
-  <form action="https://formspree.io/f/yourid" method="POST">
+  <form id="form" action="https://formspree.io/f/mvzlpvwg" method="POST">
     <input type="email" name="email" placeholder="Enter your email" required>
     <button class="btn">Book Free Demo</button>
   </form>
@@ -177,10 +176,14 @@ footer {
   <h2>Hear Botnex in Action</h2>
   <p style="color:#aaa;">Real AI answering a customer call</p>
 
-  <audio controls>
-    <source src="demo.mp3" type="audio/mpeg">
-    Your browser does not support audio
+  <audio id="demoAudio" controls>
+    <source src="./demo.mp3" type="audio/mpeg">
+    Your browser does not support audio.
   </audio>
+
+  <p style="margin-top:10px; color:#777;">
+    Click play to hear how Botnex handles real calls
+  </p>
 </div>
 
 <!-- FEATURES -->
