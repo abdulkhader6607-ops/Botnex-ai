@@ -127,7 +127,17 @@ input::placeholder{color:#555}
 .roi-input{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:14px;
+}
+.roi-label{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.roi-note{
+  font-size:12px;
+  color:var(--dim);
+  margin-top:4px;
 }
 .roi-result{
   text-align:center;
@@ -161,7 +171,6 @@ input::placeholder{color:#555}
 /* FOOTER */
 footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba(255,255,255,.06)}
 
-/* reveal */
 .reveal{opacity:0;transform:translateY(20px);transition:.6s}
 .reveal.in{opacity:1;transform:none}
 </style>
@@ -171,7 +180,6 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
 
 <div class="container">
 
-  <!-- NAV -->
   <div class="nav">
     <div class="brand">Botnex AI</div>
     <div>
@@ -181,7 +189,6 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
     <a href="#form" class="btn">Book Demo</a>
   </div>
 
-  <!-- HERO -->
   <section class="hero">
     <h1>
       Turn Missed Calls Into <span class="accent">Booked Appointments</span> Automatically
@@ -223,7 +230,6 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
     </form>
   </section>
 
-  <!-- AUDIO -->
   <section class="section reveal">
     <h2>Hear Botnex in Action</h2>
     <div class="sub">Real AI answering a live customer call</div>
@@ -238,7 +244,6 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
     </div>
   </section>
 
-  <!-- FEATURES -->
   <section id="features" class="section reveal">
     <h2>What Botnex Does</h2>
     <div class="sub">A complete AI calling system for inbound, outbound, and follow-ups</div>
@@ -251,24 +256,42 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
     </div>
   </section>
 
-  <!-- ROI CALCULATOR -->
+  <!-- ROI -->
   <section class="section reveal">
     <h2>How Much Revenue Are You Losing From Missed Calls?</h2>
     <div class="sub">Most service businesses lose 30–60% of inbound leads. Let’s calculate yours.</div>
 
     <div class="roi-wrap">
+
       <div class="roi-card">
         <h3>Your Numbers</h3>
+
         <div class="roi-input">
-          <input type="number" id="calls" value="150" oninput="calculateROI()">
-          <input type="number" id="missed" value="35" oninput="calculateROI()">
-          <input type="number" id="value" value="500" oninput="calculateROI()">
+
+          <div>
+            <div class="roi-label">Monthly Call Volume</div>
+            <input type="number" id="calls" value="150" oninput="calculateROI()">
+            <div class="roi-note">(Estimate is fine)</div>
+          </div>
+
+          <div>
+            <div class="roi-label">% of Calls Missed</div>
+            <input type="number" id="missed" value="35" oninput="calculateROI()">
+            <div class="roi-note">(Most businesses miss 25–60%)</div>
+          </div>
+
+          <div>
+            <div class="roi-label">Average Job Value ($)</div>
+            <input type="number" id="value" value="500" oninput="calculateROI()">
+            <div class="roi-note">(Your average revenue per booking)</div>
+          </div>
+
         </div>
       </div>
 
       <div class="roi-card roi-result">
         <div class="roi-big" id="monthlyLoss">$0</div>
-        <div class="roi-sub">Revenue lost every month</div>
+        <div class="roi-sub">You are losing this much revenue every month</div>
 
         <div class="roi-mini">
           ≈ <span id="dailyLoss">$0</span> / day •
@@ -279,6 +302,7 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
           <a href="#form" class="btn">Recover This Revenue</a>
         </div>
       </div>
+
     </div>
   </section>
 
