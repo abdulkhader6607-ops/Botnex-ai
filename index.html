@@ -180,66 +180,224 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
 
 <div class="container">
 
-<!-- NAV, HERO, FEATURES, ROI (UNCHANGED ABOVE) -->
-
-<!-- UPDATED PRICING -->
-<section id="pricing" class="section reveal">
-  <h2>Simple plans. Serious ROI.</h2>
-  <div class="sub">Botnex isn’t a cost — it’s a revenue engine.</div>
-
-  <div class="pricing">
-
-    <div class="price">
-      <h3>Starter</h3>
-      <h2>$149/mo</h2>
-      <p><b>Start capturing missed revenue</b></p>
-      <p>Includes up to <b>400 minutes/month</b></p>
-      <p>AI answers & books appointments</p>
-      <p>Runs 24/7 without staff</p>
-      <p style="color:var(--accent)">→ Pays for itself with 2–3 bookings</p>
-      <p style="color:var(--dim);font-size:12px;margin-top:10px">
-        Additional usage billed at $0.10/min
-      </p>
+  <div class="nav">
+    <div class="brand">Botnex AI</div>
+    <div>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
     </div>
-
-    <div class="price highlight">
-      <h3>Growth</h3>
-      <h2>$399/mo</h2>
-      <p><b>Scale your lead pipeline</b></p>
-      <p>Includes up to <b>1200 minutes/month</b></p>
-      <p>Handles high call volume</p>
-      <p>Qualifies + converts leads</p>
-      <p>Automated follow-ups</p>
-      <p style="color:var(--accent)">→ +30–60% more bookings</p>
-      <p style="color:var(--dim);font-size:12px;margin-top:10px">
-        Additional usage billed at $0.08/min
-      </p>
-    </div>
-
-    <div class="price">
-      <h3>Premium</h3>
-      <h2>$799/mo</h2>
-      <p><b>Full automation</b></p>
-      <p>Includes up to <b>3000 minutes/month</b></p>
-      <p>Unlimited AI call handling</p>
-      <p>Multi-agent workflows</p>
-      <p>Advanced scaling & optimization</p>
-      <p style="color:var(--accent)">→ Zero missed revenue</p>
-      <p style="color:var(--dim);font-size:12px;margin-top:10px">
-        Additional usage billed at $0.06/min
-      </p>
-    </div>
-
+    <a href="#form" class="btn">Book Demo</a>
   </div>
 
-  <p style="text-align:center;color:var(--dim);margin-top:18px">
-    Plans are designed for typical usage. Most businesses never exceed limits.
-  </p>
-</section>
+  <section class="hero">
+    <h1>
+      Turn Missed Calls Into <span class="accent">Booked Appointments</span> Automatically
+    </h1>
 
-<!-- FOOTER + SCRIPT UNCHANGED -->
+    <p>
+      Botnex answers every call, qualifies leads, and books appointments 24/7 — so you never lose revenue to missed calls again.
+    </p>
+
+    <a href="#form" class="btn">Get Free Demo</a>
+
+    <div class="trust">Used by service businesses across the US</div>
+
+    <div class="stats">
+      <div class="stat">
+        <h3>30–60%</h3>
+        <p>More bookings</p>
+      </div>
+      <div class="stat">
+        <h3>0 missed</h3>
+        <p>Calls handled</p>
+      </div>
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Availability</p>
+      </div>
+    </div>
+
+    <form id="form" action="https://formsubmit.co/sales@getbotnex.com" method="POST">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone Number">
+        <button class="btn" type="submit">Start My Demo</button>
+      </div>
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Botnex Lead">
+      <input type="hidden" name="_next" value="https://getbotnex.com/#form">
+    </form>
+  </section>
+
+  <section class="section reveal">
+    <h2>Hear Botnex in Action</h2>
+    <div class="sub">Real AI answering a live customer call</div>
+
+    <div class="audio-box">
+      <audio id="audio" src="demo.mp3"></audio>
+      <button class="btn ghost" onclick="toggleAudio()" id="playBtn">▶ Play Demo</button>
+
+      <div class="bars">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section reveal">
+    <h2>What Botnex Does</h2>
+    <div class="sub">A complete AI calling system for inbound, outbound, and follow-ups</div>
+
+    <div class="features">
+      <div class="card">📞 Answer inbound & outbound calls instantly</div>
+      <div class="card">🎯 Qualify leads automatically</div>
+      <div class="card">📅 Book appointments into your calendar</div>
+      <div class="card">🔁 Follow up until they respond</div>
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section class="section reveal">
+    <h2>How Much Revenue Are You Losing From Missed Calls?</h2>
+    <div class="sub">Most service businesses lose 30–60% of inbound leads. Let’s calculate yours.</div>
+
+    <div class="roi-wrap">
+
+      <div class="roi-card">
+        <h3>Your Numbers</h3>
+
+        <div class="roi-input">
+
+          <div>
+            <div class="roi-label">Monthly Call Volume</div>
+            <input type="number" id="calls" value="150" oninput="calculateROI()">
+            <div class="roi-note">(Estimate is fine)</div>
+          </div>
+
+          <div>
+            <div class="roi-label">% of Calls Missed</div>
+            <input type="number" id="missed" value="35" oninput="calculateROI()">
+            <div class="roi-note">(Most businesses miss 25–60%)</div>
+          </div>
+
+          <div>
+            <div class="roi-label">Average Job Value ($)</div>
+            <input type="number" id="value" value="500" oninput="calculateROI()">
+            <div class="roi-note">(Your average revenue per booking)</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="roi-card roi-result">
+        <div class="roi-big" id="monthlyLoss">$0</div>
+        <div class="roi-sub">You are losing this much revenue every month</div>
+
+        <div class="roi-mini">
+          ≈ <span id="dailyLoss">$0</span> / day •
+          <span id="yearlyLoss">$0</span> / year
+        </div>
+
+        <div style="margin-top:16px">
+          <a href="#form" class="btn">Recover This Revenue</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section reveal">
+    <h2>Simple plans. Serious ROI.</h2>
+    <div class="sub">Botnex isn’t a cost — it’s a revenue engine.</div>
+
+    <div class="pricing">
+      <div class="price">
+        <h3>Starter</h3>
+        <h2>$149/mo</h2>
+        <p><b>Start capturing missed revenue</b></p>
+        <p>Captures missed calls automatically</p>
+        <p>Books appointments without manual effort</p>
+        <p>Runs 24/7 without staff</p>
+        <p style="color:var(--accent)">→ Pays for itself with 2–3 bookings</p>
+      </div>
+
+      <div class="price highlight">
+        <h3>Growth</h3>
+        <h2>$399/mo</h2>
+        <p><b>Scale your lead pipeline</b></p>
+        <p>Handles high call volume</p>
+        <p>Qualifies + converts leads</p>
+        <p>Automated follow-ups until response</p>
+        <p style="color:var(--accent)">→ +30–60% more bookings</p>
+      </div>
+
+      <div class="price">
+        <h3>Premium</h3>
+        <h2>$799/mo</h2>
+        <p><b>Full automation</b></p>
+        <p>Unlimited AI call handling</p>
+        <p>Multi-agent workflows</p>
+        <p>Advanced scaling & optimization</p>
+        <p style="color:var(--accent)">→ Zero missed revenue</p>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--dim);margin-top:18px">
+      Most businesses recover cost within the first few bookings
+    </p>
+  </section>
+
+  <footer>
+    Botnex AI • sales@getbotnex.com
+  </footer>
 
 </div>
+
+<script>
+function toggleAudio(){
+  const a = document.getElementById('audio');
+  const btn = document.getElementById('playBtn');
+  if(a.paused){
+    a.play();
+    btn.textContent = '⏸ Pause Demo';
+  } else {
+    a.pause();
+    btn.textContent = '▶ Play Demo';
+  }
+}
+
+function calculateROI(){
+  const calls = parseFloat(document.getElementById("calls").value) || 0;
+  const missed = parseFloat(document.getElementById("missed").value) || 0;
+  const value = parseFloat(document.getElementById("value").value) || 0;
+
+  const missedCalls = calls * (missed / 100);
+  const lostRevenue = missedCalls * value;
+
+  document.getElementById("monthlyLoss").innerText =
+    "$" + Math.round(lostRevenue).toLocaleString();
+
+  document.getElementById("dailyLoss").innerText =
+    "$" + Math.round(lostRevenue / 30).toLocaleString();
+
+  document.getElementById("yearlyLoss").innerText =
+    "$" + Math.round(lostRevenue * 12).toLocaleString();
+}
+
+calculateROI();
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 
 </body>
 </html>
