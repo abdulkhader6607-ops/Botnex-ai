@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Botnex AI</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -39,23 +39,27 @@ body {
 .btn {
   background:#00e59b;
   color:black;
-  padding:12px 22px;
+  padding:12px 24px;
   border-radius:30px;
   font-weight:600;
   text-decoration:none;
   display:inline-block;
+  transition:0.3s;
 }
 
-/* HERO */
+.btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(0,229,155,0.3);
+}
+
 .hero {
   text-align:center;
-  padding:100px 20px 60px;
+  padding:120px 20px 80px;
 }
 
 .hero h1 {
   font-family:'Outfit';
-  font-size:42px;
-  line-height:1.2;
+  font-size:48px;
 }
 
 .hero span {
@@ -66,46 +70,43 @@ body {
   color:#aaa;
   max-width:700px;
   margin:20px auto;
-  font-size:16px;
 }
 
-/* DEMO */
 .demo {
   text-align:center;
-  padding:60px 20px;
+  padding:80px 20px;
 }
 
-/* FEATURES */
 .features {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:60px 20px;
+  gap:25px;
+  padding:80px 20px;
 }
 
 .card {
   border:1px solid #222;
-  padding:25px;
-  border-radius:12px;
+  padding:30px;
+  border-radius:14px;
   transition:0.3s;
 }
 
 .card:hover {
   border-color:#00e59b;
+  transform:translateY(-6px);
 }
 
-/* PRICING */
 .pricing {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:60px 20px;
+  gap:25px;
+  padding:80px 20px;
 }
 
 .price {
   border:1px solid #222;
-  padding:30px;
-  border-radius:12px;
+  padding:35px;
+  border-radius:14px;
   text-align:center;
 }
 
@@ -113,7 +114,6 @@ body {
   color:#00e59b;
 }
 
-/* FORM */
 form {
   text-align:center;
   margin-top:30px;
@@ -127,10 +127,9 @@ input {
   margin-right:10px;
 }
 
-/* FOOTER */
 footer {
   text-align:center;
-  padding:40px;
+  padding:50px;
   color:#777;
 }
 </style>
@@ -144,8 +143,8 @@ footer {
 <div class="nav">
   <strong>Botnex AI</strong>
   <div>
-    <a href="#">Features</a>
-    <a href="#">Pricing</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
   </div>
   <a href="#form" class="btn">Book Free Demo</a>
 </div>
@@ -160,13 +159,13 @@ footer {
 
   <a href="#form" class="btn">Book Free Demo</a>
 
-  <p style="color:#777; margin-top:10px;">
-    Trusted by service businesses to capture missed calls and increase bookings
-  </p>
-
   <!-- FORM -->
-  <form id="form" action="https://formspree.io/f/mvzlpvwg" method="POST">
+  <form id="form" action="https://formsubmit.co/sales@getbotnex.com" method="POST">
     <input type="email" name="email" placeholder="Enter your email" required>
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Botnex Lead">
+
     <button class="btn">Book Free Demo</button>
   </form>
 </div>
@@ -176,18 +175,13 @@ footer {
   <h2>Hear Botnex in Action</h2>
   <p style="color:#aaa;">Real AI answering a customer call</p>
 
-  <audio id="demoAudio" controls>
-    <source src="./demo.mp3" type="audio/mpeg">
-    Your browser does not support audio.
+  <audio controls>
+    <source src="demo.mp3" type="audio/mpeg">
   </audio>
-
-  <p style="margin-top:10px; color:#777;">
-    Click play to hear how Botnex handles real calls
-  </p>
 </div>
 
 <!-- FEATURES -->
-<div class="features">
+<div id="features" class="features">
   <div class="card">📞 Handles inbound & outbound calls</div>
   <div class="card">🎯 Converts leads into customers</div>
   <div class="card">📅 Books appointments automatically</div>
@@ -195,7 +189,7 @@ footer {
 </div>
 
 <!-- PRICING -->
-<div class="pricing">
+<div id="pricing" class="pricing">
   <div class="price">
     <h3>Starter</h3>
     <h2>$149/mo</h2>
@@ -216,7 +210,6 @@ footer {
 Limited onboarding slots available this month
 </p>
 
-<!-- FOOTER -->
 <footer>
   Botnex AI • sales@getbotnex.com
 </footer>
