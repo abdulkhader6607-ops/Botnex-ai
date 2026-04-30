@@ -79,22 +79,6 @@ input::placeholder{color:#555}
 .section h2{font-family:'Outfit';font-weight:300;text-align:center;margin-bottom:8px}
 .section .sub{color:var(--muted);text-align:center;margin-bottom:30px}
 
-/* AUDIO */
-.audio-box{text-align:center;margin-top:18px}
-.bars{display:flex;justify-content:center;gap:6px;margin-top:14px;opacity:.9}
-.bars span{
-  width:6px;height:10px;background:var(--accent);border-radius:2px;
-  animation:wave 1s infinite ease-in-out
-}
-.bars span:nth-child(2){animation-delay:.1s}
-.bars span:nth-child(3){animation-delay:.2s}
-.bars span:nth-child(4){animation-delay:.3s}
-.bars span:nth-child(5){animation-delay:.4s}
-@keyframes wave{
-  0%,100%{height:10px;opacity:.6}
-  50%{height:30px;opacity:1}
-}
-
 /* FEATURES */
 .features{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -119,39 +103,11 @@ input::placeholder{color:#555}
   border-radius:14px;
   padding:22px;
 }
-.roi-card h3{
-  margin-top:0;
-  font-family:'Outfit';
-  font-weight:400;
-}
-.roi-input{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.roi-label{
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:4px;
-}
-.roi-note{
-  font-size:12px;
-  color:var(--dim);
-  margin-top:4px;
-}
-.roi-result{
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
 .roi-big{
   font-size:40px;
   font-family:'Outfit';
   color:var(--accent);
 }
-.roi-sub{color:var(--muted);margin-top:6px}
-.roi-mini{margin-top:10px;color:var(--dim);font-size:13px}
 
 /* PRICING */
 .pricing{
@@ -168,11 +124,7 @@ input::placeholder{color:#555}
 .price h2{margin:6px 0 8px;color:var(--accent);font-family:'Outfit';font-weight:400}
 .price p{color:var(--muted);font-size:14px;margin:6px 0}
 
-/* FOOTER */
 footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba(255,255,255,.06)}
-
-.reveal{opacity:0;transform:translateY(20px);transition:.6s}
-.reveal.in{opacity:1;transform:none}
 </style>
 </head>
 
@@ -180,139 +132,14 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
 
 <div class="container">
 
-  <div class="nav">
-    <div class="brand">Botnex AI</div>
-    <div>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-    </div>
-    <a href="#form" class="btn">Book Demo</a>
-  </div>
+<!-- KEEP ALL YOUR SECTIONS SAME ABOVE -->
 
-  <section class="hero">
-    <h1>
-      Turn Missed Calls Into <span class="accent">Booked Appointments</span> Automatically
-    </h1>
-
-    <p>
-      Botnex answers every call, qualifies leads, and books appointments 24/7 — so you never lose revenue to missed calls again.
-    </p>
-
-    <a href="#form" class="btn">Get Free Demo</a>
-
-    <div class="trust">Used by service businesses across the US</div>
-
-    <div class="stats">
-      <div class="stat">
-        <h3>30–60%</h3>
-        <p>More bookings</p>
-      </div>
-      <div class="stat">
-        <h3>0 missed</h3>
-        <p>Calls handled</p>
-      </div>
-      <div class="stat">
-        <h3>24/7</h3>
-        <p>Availability</p>
-      </div>
-    </div>
-
-    <form id="form" action="https://formsubmit.co/sales@getbotnex.com" method="POST">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="phone" placeholder="Phone Number">
-        <button class="btn" type="submit">Start My Demo</button>
-      </div>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="New Botnex Lead">
-      <input type="hidden" name="_next" value="https://getbotnex.com/#form">
-    </form>
-  </section>
-
-  <section class="section reveal">
-    <h2>Hear Botnex in Action</h2>
-    <div class="sub">Real AI answering a live customer call</div>
-
-    <div class="audio-box">
-      <audio id="audio" src="demo.mp3"></audio>
-      <button class="btn ghost" onclick="toggleAudio()" id="playBtn">▶ Play Demo</button>
-
-      <div class="bars">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-  </section>
-
-  <section id="features" class="section reveal">
-    <h2>What Botnex Does</h2>
-    <div class="sub">A complete AI calling system for inbound, outbound, and follow-ups</div>
-
-    <div class="features">
-      <div class="card">📞 Answer inbound & outbound calls instantly</div>
-      <div class="card">🎯 Qualify leads automatically</div>
-      <div class="card">📅 Book appointments into your calendar</div>
-      <div class="card">🔁 Follow up until they respond</div>
-    </div>
-  </section>
-
-  <!-- ROI -->
-  <section class="section reveal">
-    <h2>How Much Revenue Are You Losing From Missed Calls?</h2>
-    <div class="sub">Most service businesses lose 30–60% of inbound leads. Let’s calculate yours.</div>
-
-    <div class="roi-wrap">
-
-      <div class="roi-card">
-        <h3>Your Numbers</h3>
-
-        <div class="roi-input">
-
-          <div>
-            <div class="roi-label">Monthly Call Volume</div>
-            <input type="number" id="calls" value="150" oninput="calculateROI()">
-            <div class="roi-note">(Estimate is fine)</div>
-          </div>
-
-          <div>
-            <div class="roi-label">% of Calls Missed</div>
-            <input type="number" id="missed" value="35" oninput="calculateROI()">
-            <div class="roi-note">(Most businesses miss 25–60%)</div>
-          </div>
-
-          <div>
-            <div class="roi-label">Average Job Value ($)</div>
-            <input type="number" id="value" value="500" oninput="calculateROI()">
-            <div class="roi-note">(Your average revenue per booking)</div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="roi-card roi-result">
-        <div class="roi-big" id="monthlyLoss">$0</div>
-        <div class="roi-sub">You are losing this much revenue every month</div>
-
-        <div class="roi-mini">
-          ≈ <span id="dailyLoss">$0</span> / day •
-          <span id="yearlyLoss">$0</span> / year
-        </div>
-
-        <div style="margin-top:16px">
-          <a href="#form" class="btn">Recover This Revenue</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PRICING -->
- <section id="pricing" class="section reveal">
+<!-- UPDATED PRICING -->
+<section id="pricing" class="section reveal">
   <h2>Simple plans. Serious ROI.</h2>
   <div class="sub">Botnex isn’t a cost — it’s a revenue engine.</div>
 
   <div class="pricing">
-    
     <div class="price">
       <h3>Starter</h3>
       <h2>$149/mo</h2>
@@ -354,56 +181,18 @@ footer{text-align:center;padding:40px;color:var(--dim);border-top:1px solid rgba
         Extra usage billed at $0.06 per minute
       </p>
     </div>
-
   </div>
 
   <p style="text-align:center;color:var(--dim);margin-top:18px">
     Plans are designed for typical usage. Most businesses never exceed limits.
   </p>
 </section>
-function toggleAudio(){
-  const a = document.getElementById('audio');
-  const btn = document.getElementById('playBtn');
-  if(a.paused){
-    a.play();
-    btn.textContent = '⏸ Pause Demo';
-  } else {
-    a.pause();
-    btn.textContent = '▶ Play Demo';
-  }
-}
 
-function calculateROI(){
-  const calls = parseFloat(document.getElementById("calls").value) || 0;
-  const missed = parseFloat(document.getElementById("missed").value) || 0;
-  const value = parseFloat(document.getElementById("value").value) || 0;
+<footer>
+Botnex AI • sales@getbotnex.com
+</footer>
 
-  const missedCalls = calls * (missed / 100);
-  const lostRevenue = missedCalls * value;
-
-  document.getElementById("monthlyLoss").innerText =
-    "$" + Math.round(lostRevenue).toLocaleString();
-
-  document.getElementById("dailyLoss").innerText =
-    "$" + Math.round(lostRevenue / 30).toLocaleString();
-
-  document.getElementById("yearlyLoss").innerText =
-    "$" + Math.round(lostRevenue * 12).toLocaleString();
-}
-
-calculateROI();
-
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      io.unobserve(e.target);
-    }
-  });
-},{threshold:0.12});
-
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+</div>
 
 </body>
 </html>
