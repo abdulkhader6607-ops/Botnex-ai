@@ -38,15 +38,73 @@ body{
 .btn{
   background:var(--accent);color:#000;padding:12px 22px;border-radius:999px;
   font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:.25s;border:1px solid rgba(0,0,0,.1)
 }
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,229,155,.25)}
+.btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.1)}
+.btn.ghost:hover{border-color:var(--accent)}
 
 /* HERO */
 .hero{text-align:center;padding:110px 20px 70px}
-.hero h1{font-family:'Outfit';font-size:48px}
-.hero .accent{color:var(--accent)}
-.hero p{color:var(--muted)}
+.hero h1{
+  font-family:'Outfit';font-weight:300;
+  font-size:clamp(34px,5vw,54px);line-height:1.15;letter-spacing:-.02em
+}
+.hero .accent{color:var(--accent);font-weight:500}
+.hero p{color:var(--muted);max-width:720px;margin:18px auto 26px;font-size:17px}
+.trust{color:var(--dim);font-size:13px;margin-top:10px}
 
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  max-width:760px;margin:28px auto 0
+}
+.stat{
+  border:1px solid var(--border);border-radius:12px;padding:16px;background:rgba(255,255,255,.02)
+}
+.stat h3{margin:0;color:var(--accent);font-family:'Outfit';font-weight:400}
+.stat p{margin:4px 0 0;color:var(--dim);font-size:13px}
+
+/* FORM */
+form{margin-top:22px}
+.form-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+input{
+  padding:12px 14px;border-radius:10px;border:1px solid var(--border);
+  background:#0a0a0a;color:#fff;min-width:200px
+}
+input::placeholder{color:#555}
+
+/* SECTION */
 .section{padding:80px 20px}
+.section h2{font-family:'Outfit';font-weight:300;text-align:center;margin-bottom:8px}
+.section .sub{color:var(--muted);text-align:center;margin-bottom:30px}
+
+/* AUDIO */
+.audio-box{text-align:center;margin-top:18px}
+.bars{display:flex;justify-content:center;gap:6px;margin-top:14px;opacity:.9}
+.bars span{
+  width:6px;height:10px;background:var(--accent);border-radius:2px;
+  animation:wave 1s infinite ease-in-out
+}
+.bars span:nth-child(2){animation-delay:.1s}
+.bars span:nth-child(3){animation-delay:.2s}
+.bars span:nth-child(4){animation-delay:.3s}
+.bars span:nth-child(5){animation-delay:.4s}
+@keyframes wave{
+  0%,100%{height:10px;opacity:.6}
+  50%{height:30px;opacity:1}
+}
+
+/* FEATURES */
+.features{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;margin-top:30px
+}
+.card{
+  border:1px solid var(--border);padding:22px;border-radius:14px;background:var(--card);
+  transition:.25s
+}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
 
 /* ROI */
 .roi-wrap{
@@ -61,17 +119,33 @@ body{
   border-radius:14px;
   padding:22px;
 }
+.roi-card h3{
+  margin-top:0;
+  font-family:'Outfit';
+  font-weight:400;
+}
+.roi-input{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.roi-label{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.roi-note{
+  font-size:12px;
+  color:var(--dim);
+  margin-top:4px;
+}
+.roi-result{
+  text-align:center;
+}
 .roi-big{
   font-size:40px;
   font-family:'Outfit';
   color:var(--accent);
-}
-
-/* FEATURES */
-.features{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
 }
 
 /* PRICING */
@@ -85,6 +159,7 @@ body{
 .price.highlight{border-color:var(--accent)}
 .price h2{color:var(--accent)}
 
+/* FOOTER */
 footer{text-align:center;padding:40px;color:var(--dim)}
 </style>
 </head>
@@ -93,109 +168,55 @@ footer{text-align:center;padding:40px;color:var(--dim)}
 
 <div class="container">
 
-<!-- NAV -->
-<div class="nav">
-  <div class="brand">Botnex AI</div>
-  <div>
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-  </div>
-  <a href="#form" class="btn">Book Demo</a>
-</div>
-
 <!-- HERO -->
 <section class="hero">
-  <h1>
-    Turn Missed Calls Into <span class="accent">Booked Appointments</span>
-  </h1>
-  <p>
-    Botnex answers every call, qualifies leads, and books appointments 24/7.
-  </p>
-</section>
-
-<!-- ROI -->
-<section class="section">
-  <h2>How Much Revenue Are You Losing?</h2>
-
-  <div class="roi-wrap">
-    <div class="roi-card">
-      <input type="number" id="calls" value="150" oninput="calculateROI()">
-      <input type="number" id="missed" value="35" oninput="calculateROI()">
-      <input type="number" id="value" value="500" oninput="calculateROI()">
-    </div>
-
-    <div class="roi-card">
-      <div class="roi-big" id="monthlyLoss">$0</div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features" class="section">
-  <h2>What Botnex Does</h2>
-  <div class="features">
-    <div>📞 Answer calls</div>
-    <div>🎯 Qualify leads</div>
-    <div>📅 Book appointments</div>
-    <div>🔁 Follow ups</div>
-  </div>
+<h1>Turn Missed Calls Into <span class="accent">Booked Appointments</span></h1>
+<p>Botnex answers every call, qualifies leads, and books appointments 24/7.</p>
 </section>
 
 <!-- PRICING -->
 <section id="pricing" class="section">
-  <h2>Simple plans. Serious ROI.</h2>
 
-  <div class="pricing">
+<h2>Simple plans. Serious ROI.</h2>
+<div class="sub">Botnex isn’t a cost — it’s a revenue engine.</div>
 
-    <div class="price">
-      <h3>Starter</h3>
-      <h2>$149/mo</h2>
-      <p>Includes up to 400 minutes/month</p>
-      <p>Captures missed calls</p>
-      <p style="color:var(--accent)">Pays for itself</p>
-      <p style="font-size:12px;color:var(--dim)">Extra $0.10/min</p>
-    </div>
+<div class="pricing">
 
-    <div class="price highlight">
-      <h3>Growth</h3>
-      <h2>$399/mo</h2>
-      <p>Includes up to 1200 minutes/month</p>
-      <p>High call volume</p>
-      <p style="color:var(--accent)">+30–60% bookings</p>
-      <p style="font-size:12px;color:var(--dim)">Extra $0.08/min</p>
-    </div>
+<div class="price">
+<h3>Starter</h3>
+<h2>$149/mo</h2>
+<p>Includes up to 400 minutes/month</p>
+<p>Captures missed calls automatically</p>
+<p>Books appointments</p>
+<p style="color:var(--accent)">→ Pays for itself</p>
+<p style="font-size:12px;color:var(--dim)">Extra usage: $0.10/min</p>
+</div>
 
-    <div class="price">
-      <h3>Premium</h3>
-      <h2>$799/mo</h2>
-      <p>Includes up to 3000 minutes/month</p>
-      <p>Full automation</p>
-      <p style="color:var(--accent)">Zero missed revenue</p>
-      <p style="font-size:12px;color:var(--dim)">Extra $0.06/min</p>
-    </div>
+<div class="price highlight">
+<h3>Growth</h3>
+<h2>$399/mo</h2>
+<p>Includes up to 1200 minutes/month</p>
+<p>Handles high call volume</p>
+<p>Qualifies + converts leads</p>
+<p style="color:var(--accent)">→ +30–60% more bookings</p>
+<p style="font-size:12px;color:var(--dim)">Extra usage: $0.08/min</p>
+</div>
 
-  </div>
-</section>
-
-<footer>
-Botnex AI • sales@getbotnex.com
-</footer>
+<div class="price">
+<h3>Premium</h3>
+<h2>$799/mo</h2>
+<p>Includes up to 3000 minutes/month</p>
+<p>Unlimited AI handling</p>
+<p>Advanced workflows</p>
+<p style="color:var(--accent)">→ Zero missed revenue</p>
+<p style="font-size:12px;color:var(--dim)">Extra usage: $0.06/min</p>
+</div>
 
 </div>
 
-<script>
-function calculateROI(){
-  const calls = parseFloat(document.getElementById("calls").value) || 0;
-  const missed = parseFloat(document.getElementById("missed").value) || 0;
-  const value = parseFloat(document.getElementById("value").value) || 0;
+</section>
 
-  const lostRevenue = calls * (missed/100) * value;
-
-  document.getElementById("monthlyLoss").innerText =
-    "$" + Math.round(lostRevenue).toLocaleString();
-}
-calculateROI();
-</script>
+</div>
 
 </body>
 </html>
